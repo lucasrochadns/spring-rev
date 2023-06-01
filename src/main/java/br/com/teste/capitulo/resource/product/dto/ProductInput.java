@@ -2,12 +2,14 @@ package br.com.teste.capitulo.resource.product.dto;
 
 import jdk.jfr.Category;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import java.util.Set;
 
-public class ProductInput {
+public class ProductInput implements Serializable {
 
+    private static final long serialVersionUID = 1l;
     private String name;
     private String description;
     private BigDecimal price;

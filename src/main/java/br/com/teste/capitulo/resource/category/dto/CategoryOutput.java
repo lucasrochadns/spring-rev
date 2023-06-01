@@ -1,8 +1,10 @@
 package br.com.teste.capitulo.resource.category.dto;
 
 
-public class CategoryOutput {
+import java.io.Serializable;
 
+public class CategoryOutput implements Serializable {
+    private static final long serialVersionUID = 1l;
     private Long id;
     private String name;
 

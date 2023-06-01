@@ -1,7 +1,9 @@
 package br.com.teste.capitulo.resource.category.dto;
 
-public class CategoryInput {
+import java.io.Serializable;
 
+public class CategoryInput implements Serializable {
+    private static final long serialVersionUID = 1l;
     private String name;
 
     public String getName() {

@@ -1,12 +1,14 @@
 package br.com.teste.capitulo.resource.product.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import br.com.teste.capitulo.domain.Category;
 import java.util.Set;
 
-public class ProductOutput {
+public class ProductOutput implements Serializable {
 
+    private static final long serialVersionUID = 1l;
 
     private Long id;
     private String name;
