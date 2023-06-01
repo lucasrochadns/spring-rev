@@ -1,6 +1,5 @@
 package br.com.teste.capitulo.resource.category;
 
-import br.com.teste.capitulo.domain.Category;
 import br.com.teste.capitulo.resource.category.dto.CategoryIO;
 import br.com.teste.capitulo.resource.category.dto.CategoryInput;
 import br.com.teste.capitulo.resource.category.dto.CategoryOutput;
@@ -40,8 +39,8 @@ public class CategoryResource {
     @PostMapping({"/", ""})
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Object createCategory(@RequestBody CategoryInput categoryInput){
-        Category category = categoryIO.mapTo(categoryInput);
-        return categoryService.create(category);
+    public CategoryOutput createCategory(@RequestBody CategoryInput categoryInput){
+        return mapperUtil.mapTo(categoryService
+                .create(categoryIO.mapTo(categoryInput)), CategoryOutput.class);
     }
 }
