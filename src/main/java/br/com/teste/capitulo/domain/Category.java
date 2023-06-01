@@ -1,8 +1,10 @@
 package br.com.teste.capitulo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -18,6 +20,12 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant updateAt;
+    @JsonIgnore
     @ManyToMany(mappedBy = "categorySet")
     private Set<Product> productSet = new HashSet<>();
     public Category() {
@@ -48,6 +56,23 @@ public class Category implements Serializable {
         return productSet;
     }
 
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getUpdateAt() {
+        return updateAt;
+    }
+
+    @PrePersist
+    public void prePersist(){
+        createdAt = Instant.now();
+    }
+    @PreUpdate
+    public void preUpdate(){
+        updateAt = Instant.now();
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

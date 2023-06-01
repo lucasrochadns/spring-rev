@@ -2,6 +2,7 @@ package br.com.teste.capitulo.resource.utils;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Type;
@@ -22,6 +23,10 @@ public class MapperUtil {
     }
 
     public <S, D> List<D> toList(List<S> source, Type destClass){
+        return this.modelMapper.map(source, destClass);
+    }
+
+    public <S, D> Page<D> toPage(Page<S> source, Type destClass){
         return this.modelMapper.map(source, destClass);
     }
 }

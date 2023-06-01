@@ -4,7 +4,10 @@ import br.com.teste.capitulo.domain.Category;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.spi.MappingContext;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Type;
 
 @Component("categoryIO")
 public class CategoryIO {
@@ -26,5 +29,9 @@ public class CategoryIO {
 
     public Category mapTo(CategoryInput categoryInput){
         return this.modelMapper.map(categoryInput, Category.class);
+    }
+
+    public <S, D> Page<D> toPage(Page<S> source, Type destClass){
+        return this.modelMapper.map(source, destClass);
     }
 }
