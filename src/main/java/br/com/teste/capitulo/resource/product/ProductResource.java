@@ -8,6 +8,7 @@ import br.com.teste.capitulo.resource.product.dto.ProductInput;
 import br.com.teste.capitulo.resource.product.dto.ProductOutput;
 import br.com.teste.capitulo.resource.utils.MapperUtil;
 import br.com.teste.capitulo.service.ProductService;
+import jakarta.validation.Valid;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,7 +44,7 @@ public class ProductResource {
     @PostMapping({"/", ""})
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public ProductOutput create(@RequestBody ProductInput productInput){
+    public ProductOutput create(@RequestBody @Valid ProductInput productInput){
          return mapperUtil.mapTo(service.create(mapperUtil.mapTo(productInput, Product.class)), ProductOutput.class);
     }
 
@@ -63,7 +64,7 @@ public class ProductResource {
     @PutMapping({"/{id}/", "/{id}"})
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductOutput update(@PathVariable("id") Long id, @RequestBody ProductInput productInput){
+    public ProductOutput update(@PathVariable("id") Long id, @RequestBody @Valid ProductInput productInput){
         return mapperUtil
                 .mapTo(service.update(id, mapperUtil
                                 .mapTo(productInput, Product.class)), ProductOutput.class);
