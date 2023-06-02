@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ProductInput implements Serializable {
@@ -23,7 +24,7 @@ public class ProductInput implements Serializable {
     private BigDecimal price;
     private String imgUrl;
 
-    public Set<CategoryInput> categoryInputs;
+    public Set<CategoryInput> categorySet = new HashSet<>();
 
     public String getName() {
         return name;
@@ -57,7 +58,11 @@ public class ProductInput implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public Set<CategoryInput> getCategoryInputs() {
-        return categoryInputs;
+    public Set<CategoryInput> getCategorySet() {
+        return categorySet;
+    }
+
+    public void setCategorySet(Set<CategoryInput> categorySet) {
+        this.categorySet = categorySet;
     }
 }

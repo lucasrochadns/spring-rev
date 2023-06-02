@@ -44,7 +44,7 @@ public class ProductResource {
     @PostMapping({"/", ""})
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public ProductOutput create(@RequestBody @Valid ProductInput productInput){
+    public ProductOutput create(@Valid @RequestBody ProductInput productInput){
          return mapperUtil.mapTo(service.create(mapperUtil.mapTo(productInput, Product.class)), ProductOutput.class);
     }
 

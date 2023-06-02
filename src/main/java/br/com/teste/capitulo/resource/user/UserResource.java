@@ -4,8 +4,10 @@ import br.com.teste.capitulo.domain.User;
 import br.com.teste.capitulo.resource.user.dto.UserIO;
 import br.com.teste.capitulo.resource.user.dto.UserInput;
 import br.com.teste.capitulo.resource.user.dto.UserOutput;
+import br.com.teste.capitulo.resource.user.dto.UserUpdateDto;
 import br.com.teste.capitulo.resource.utils.MapperUtil;
 import br.com.teste.capitulo.service.UserService;
+import jakarta.validation.Valid;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,14 +49,14 @@ public class UserResource {
 
     @PostMapping({"/", ""})
     @ResponseBody
-    public UserOutput create(@RequestBody UserInput userInput){
+    public UserOutput create(@Valid @RequestBody UserInput userInput){
         return mapperUtil.mapTo(service.create(userIO.mapTo(userInput)), UserOutput.class);
 
     }
 
     @PutMapping({"/{id}/", "/{id}"})
     @ResponseBody
-    public UserOutput update(@PathVariable("id") Long id, @RequestBody UserInput userInput){
-        return mapperUtil.mapTo(service.update(id, userIO.mapTo(userInput)), UserOutput.class);
+    public UserOutput update(@PathVariable("id") Long id, @Valid @RequestBody UserUpdateDto userUpdateDTO){
+        return mapperUtil.mapTo(service.update(id, mapperUtil.mapTo(userUpdateDTO, User.class)), UserOutput.class);
     }
 }
