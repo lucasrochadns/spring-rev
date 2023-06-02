@@ -35,7 +35,7 @@ public class UserResource {
     @GetMapping({"/", ""})
     @ResponseBody
     public Page<UserOutput> findByAll(@PageableDefault(size = 12, sort={"firstName"})Pageable pageable){
-        return new PageImpl<>(service.findAll(pageable).stream()
+        return new PageImpl<UserOutput>(service.findAll(pageable).stream()
                 .map(x -> new UserOutput(x)).collect(Collectors.toList()));
     }
 

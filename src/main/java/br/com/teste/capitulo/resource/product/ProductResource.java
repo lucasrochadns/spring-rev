@@ -11,6 +11,7 @@ import br.com.teste.capitulo.service.ProductService;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value="/product")
@@ -32,8 +36,8 @@ public class ProductResource {
     @GetMapping({"/", ""})
     @ResponseBody
     public Page<ProductOutput> findAll(@PageableDefault(size = 12, sort = {"name"})Pageable pageable){
-        Type type = new TypeToken<Page<ProductOutput>>(){}.getType();
-        return  mapperUtil.toPage(service.index(pageable), type);
+        Type type = new TypeToken<List<ProductOutput>>(){}.getType();
+        return new PageImpl<>(mapperUtil.toList(service.index(pageable).stream().collect(Collectors.toList()), type));
     }
 
     @PostMapping({"/", ""})

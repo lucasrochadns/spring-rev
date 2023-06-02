@@ -31,7 +31,4 @@ public class CategoryIO {
         return this.modelMapper.map(categoryInput, Category.class);
     }
 
-    public <S, D> Page<D> toPage(Page<S> source, Type destClass){
-        return this.modelMapper.map(source, destClass);
-    }
 }

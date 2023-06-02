@@ -8,6 +8,14 @@ public class CategoryOutput implements Serializable {
     private Long id;
     private String name;
 
+    public CategoryOutput() {
+    }
+
+    public CategoryOutput(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

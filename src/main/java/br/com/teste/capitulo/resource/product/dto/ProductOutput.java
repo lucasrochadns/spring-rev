@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import br.com.teste.capitulo.domain.Category;
+import br.com.teste.capitulo.resource.category.dto.CategoryOutput;
+
 import java.util.Set;
 
 public class ProductOutput implements Serializable {
@@ -15,7 +17,7 @@ public class ProductOutput implements Serializable {
     private String description;
     private BigDecimal price;
     private String imgUrl;
-    private Set<Category> categorySet = new HashSet<>();
+    private Set<CategoryOutput> categorySet = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -57,11 +59,11 @@ public class ProductOutput implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public Set<Category> getCategorySet() {
+    public Set<CategoryOutput> getCategorySet() {
         return categorySet;
     }
 
-    public void setCategorySet(Set<Category> categorySet) {
+    public void setCategorySet(Set<CategoryOutput> categorySet) {
         this.categorySet = categorySet;
     }
 }
