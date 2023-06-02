@@ -1,12 +1,15 @@
 package br.com.teste.capitulo.resource.user.dto;
 
-import br.com.teste.capitulo.domain.Product;
 import br.com.teste.capitulo.domain.User;
-import br.com.teste.capitulo.resource.product.dto.ProductInput;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.modelmapper.internal.bytebuddy.description.method.MethodDescription;
 import org.modelmapper.spi.MappingContext;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Type;
 
 @Component("userIO")
 public class UserIO {

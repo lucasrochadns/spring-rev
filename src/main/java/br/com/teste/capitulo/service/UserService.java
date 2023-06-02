@@ -7,6 +7,7 @@ import br.com.teste.capitulo.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,6 +18,9 @@ public class UserService {
 
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true, isolation = Isolation.SERIALIZABLE)
     public Page<User> findAll(Pageable pageable){
@@ -51,6 +55,7 @@ public class UserService {
 
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public User create(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
 }

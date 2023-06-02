@@ -26,7 +26,4 @@ public class MapperUtil {
         return this.modelMapper.map(source, destClass);
     }
 
-    public <S, D> Page<D> toPage(Page<S> source, Type destClass){
-        return this.modelMapper.map(source, destClass);
-    }
 }

@@ -15,8 +15,16 @@ public class UserInput implements Serializable {
 
     private String password;
 
-
     private Set<RoleDto> roles = new HashSet<>();
+
+    public Set<RoleDto> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleDto> roles) {
+        this.roles = roles;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -48,7 +56,5 @@ public class UserInput implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Set<RoleDto> getRoles() {
-        return roles;
-    }
+
 }
