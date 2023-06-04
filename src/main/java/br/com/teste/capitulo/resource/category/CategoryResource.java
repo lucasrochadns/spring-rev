@@ -1,12 +1,11 @@
 package br.com.teste.capitulo.resource.category;
 
+import br.com.teste.capitulo.domain.Category;
 import br.com.teste.capitulo.resource.category.dto.CategoryIO;
 import br.com.teste.capitulo.resource.category.dto.CategoryInput;
 import br.com.teste.capitulo.resource.category.dto.CategoryOutput;
-import br.com.teste.capitulo.resource.user.dto.UserOutput;
 import br.com.teste.capitulo.resource.utils.MapperUtil;
 import br.com.teste.capitulo.service.CategoryService;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -15,9 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import br.com.teste.capitulo.domain.Category;
-import java.lang.reflect.Type;
-import java.util.List;
+
 import java.util.stream.Collectors;
 
 @Controller

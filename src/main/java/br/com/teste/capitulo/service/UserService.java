@@ -4,9 +4,14 @@ import br.com.teste.capitulo.domain.User;
 import br.com.teste.capitulo.repository.UserRepository;
 import br.com.teste.capitulo.service.exceptions.DBException;
 import br.com.teste.capitulo.service.exceptions.ResourceNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -14,8 +19,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
+    private static Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
     private UserRepository repository;
 
@@ -57,5 +63,16 @@ public class UserService {
     public User create(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = repository.findByEmail(username);
+        if(user == null){
+            logger.error("User not Found " + username);
+            throw new UsernameNotFoundException("User not Found");
+        }
+        logger.info("User Found");
+        return user;
     }
 }

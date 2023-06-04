@@ -4,10 +4,11 @@ import br.com.teste.capitulo.domain.User;
 import br.com.teste.capitulo.repository.UserRepository;
 import br.com.teste.capitulo.resource.exceptions.FieldMessage;
 import br.com.teste.capitulo.resource.user.dto.UserInput;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 import java.util.List;
 

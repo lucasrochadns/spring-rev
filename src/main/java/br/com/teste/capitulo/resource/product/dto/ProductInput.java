@@ -1,11 +1,10 @@
 package br.com.teste.capitulo.resource.product.dto;
 
 import br.com.teste.capitulo.resource.category.dto.CategoryInput;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
 

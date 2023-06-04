@@ -1,9 +1,7 @@
 package br.com.teste.capitulo.domain;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
 @Entity
 @Table(name="tb_role")

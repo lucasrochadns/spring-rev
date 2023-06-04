@@ -7,8 +7,6 @@ import br.com.teste.capitulo.resource.user.dto.UserOutput;
 import br.com.teste.capitulo.resource.user.dto.UserUpdateDto;
 import br.com.teste.capitulo.resource.utils.MapperUtil;
 import br.com.teste.capitulo.service.UserService;
-import jakarta.validation.Valid;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -17,8 +15,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Type;
-import java.util.List;
+import javax.validation.Valid;
 import java.util.stream.Collectors;
 
 @Controller

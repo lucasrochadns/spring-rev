@@ -1,9 +1,9 @@
 package br.com.teste.capitulo.resource.user.dto;
 
 import br.com.teste.capitulo.service.validator.UserUpdateValid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @UserUpdateValid
